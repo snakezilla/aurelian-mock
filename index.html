@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurelian</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-mark">A</span>
+        <span class="brand-name">Aurelian</span>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-link active" href="#home" data-route="home">Home</a>
+        <a class="nav-link" href="#revenue" data-route="revenue">Revenue</a>
+        <a class="nav-link" href="#cash" data-route="cash">Cash</a>
+        <a class="nav-link" href="#advisor" data-route="advisor">Advisor</a>
+      </nav>
+
+      <div class="connections">
+        <div class="section-label">Connections</div>
+        <div class="conn-item"><span class="conn-dot on"></span><span class="conn-name">AdvancedMD</span><span class="conn-type">EMR</span></div>
+        <div class="conn-item"><span class="conn-dot on"></span><span class="conn-name">Waystar</span><span class="conn-type">Claims</span></div>
+        <div class="conn-item"><span class="conn-dot on"></span><span class="conn-name">Stripe Treasury</span><span class="conn-type">Banking</span></div>
+        <div class="conn-item"><span class="conn-dot on"></span><span class="conn-name">Plaid</span><span class="conn-type">Recon</span></div>
+      </div>
+
+      <div class="sidebar-practice">
+        <div class="practice-avatar">NW</div>
+        <div class="practice-info">
+          <div class="practice-name">Northlake Wound Care</div>
+          <div class="practice-meta">Synced 9:42 AM</div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 class="topbar-title" id="pageTitle">Home</h1>
+          <span class="topbar-ctx" id="pageCtx">Northlake Wound Care</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-ghost" id="searchBtn">Search</button>
+          <button class="btn btn-ghost" id="exportBtn">Export</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="view active" data-view="home">
+          <div class="metrics-row" id="metricsRow"></div>
+          <div class="advance-banner" id="advanceBanner">
+            <div>
+              <div class="advance-tag">Advance available</div>
+              <div class="advance-amount">$74,000</div>
+              <div class="advance-detail">23 claims &middot; 4 payers &middot; 91% expected &middot; Est. fee $1,180</div>
+            </div>
+            <button class="btn btn-primary" id="advanceBtn">Review terms</button>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <div class="card-head"><h3>Collections &middot; 6 months</h3></div>
+              <div class="card-body"><div class="chart" id="collectionsChart"></div></div>
+            </div>
+            <div class="card">
+              <div class="card-head"><h3>Needs attention</h3><span class="count" id="actionCount">4</span></div>
+              <div class="card-body" id="actionList"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" data-view="revenue">
+          <div class="metrics-row" id="revMetrics"></div>
+          <div class="two-col">
+            <div class="card">
+              <div class="card-head"><h3>Payer performance</h3></div>
+              <div class="card-body np">
+                <table class="tbl"><thead><tr><th>Payer</th><th class="r">Collected</th><th class="r">Denial rate</th><th class="r">Avg pay</th></tr></thead><tbody id="payerBody"></tbody></table>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-head"><h3>Clinician revenue</h3></div>
+              <div class="card-body np">
+                <table class="tbl"><thead><tr><th>Clinician</th><th class="r">Collections</th><th class="r">Rev / visit</th><th class="r">Denial rate</th></tr></thead><tbody id="clinicianBody"></tbody></table>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-head"><h3>Needs your sign-off</h3><span class="count" id="signoffCount">1</span></div>
+            <div class="card-body" id="signoffList"></div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-head"><h3>This week</h3><span class="count live">AI</span></div>
+            <div class="card-body" id="aiSummary"></div>
+          </div>
+        </section>
+
+        <section class="view" data-view="cash">
+          <div class="accounts-row" id="accountsRow"></div>
+          <div class="two-col">
+            <div class="card">
+              <div class="card-head"><h3>90-day projection</h3><strong class="proj-val" id="projVal">$510,000</strong></div>
+              <div class="card-body">
+                <div class="proj-chart" id="projChart"></div>
+                <p class="note" id="projNote">Excludes Aetna recovery until appeal approved</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-head"><h3>Scenarios</h3></div>
+              <div class="card-body" id="scenarioList"></div>
+            </div>
+          </div>
+          <div class="card" style="margin-top:16px">
+            <div class="card-head"><h3>Ledger</h3></div>
+            <div class="card-body np">
+              <table class="tbl"><thead><tr><th>Date</th><th>Entry</th><th>Source</th><th class="r">Amount</th><th>Status</th></tr></thead><tbody id="ledgerBody"></tbody></table>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" data-view="advisor">
+          <div class="chat-wrap">
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-footer">
+              <div class="suggestions" id="suggestions"></div>
+              <div class="chat-row">
+                <input class="chat-input" id="chatInput" placeholder="Ask about your practice..." autocomplete="off">
+                <button class="btn btn-primary" id="chatSend">Send</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="modal" id="modal">
+      <div class="modal-head">
+        <div>
+          <div class="modal-kicker" id="modalKicker"></div>
+          <h3 class="modal-title" id="modalTitle"></h3>
+        </div>
+        <button class="modal-x" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
