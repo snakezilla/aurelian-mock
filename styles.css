@@ -26,11 +26,12 @@ body{font-family:var(--font);font-size:14px;color:var(--tx);background:var(--bg)
 .section-label{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--side-tx);padding:0 8px;margin-bottom:8px;font-weight:600}
 .conn-item{display:flex;align-items:center;gap:8px;padding:5px 8px;font-size:13px}
 .conn-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.conn-dot.on{background:var(--green)}.conn-dot.warn{background:var(--yellow)}.conn-dot.off{background:var(--red)}
+.conn-dot.on{background:var(--green)}
 .conn-name{flex:1;color:var(--side-tx)}
 .conn-type{font-size:10px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.04em}
 .sidebar-practice{display:flex;align-items:center;gap:10px;margin-top:16px;padding:12px 8px;border-top:1px solid rgba(255,255,255,.08)}
 .practice-avatar{width:32px;height:32px;border-radius:6px;background:rgba(255,255,255,.1);color:var(--side-tx);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
+.practice-info{flex:1;min-width:0}
 .practice-name{font-size:13px;color:var(--side-tx2);font-weight:500}
 .practice-meta{font-size:12px;color:var(--side-tx)}
 
@@ -75,7 +76,6 @@ body{font-family:var(--font);font-size:14px;color:var(--tx);background:var(--bg)
 .badge-blue{background:var(--blue-bg);color:var(--blue)}
 .badge-yellow{background:var(--yellow-bg);color:var(--yellow)}
 .badge-red{background:var(--red-bg);color:var(--red)}
-.badge-gray{background:var(--bg);color:var(--tx2)}
 .trend-up{color:var(--green);font-weight:500}
 
 /* ── AR Advance ── */
@@ -86,7 +86,6 @@ body{font-family:var(--font);font-size:14px;color:var(--tx);background:var(--bg)
 
 /* ── Grids ── */
 .two-col{display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
-.rev-grid{display:grid;grid-template-columns:1fr 300px;gap:16px}
 
 /* ── Chart ── */
 .chart{display:flex;align-items:flex-end;gap:12px;height:180px}
@@ -111,16 +110,13 @@ body{font-family:var(--font);font-size:14px;color:var(--tx);background:var(--bg)
 .tbl td{padding:12px 20px;border-bottom:1px solid var(--border-lt);font-size:14px}
 .tbl tbody tr{cursor:pointer;transition:background 80ms}
 .tbl tbody tr:hover{background:var(--bg)}
-.tbl tbody tr.selected{background:var(--blue-bg)}
 .tbl .r{text-align:right}
 
 /* ── AI feed ── */
 .ai-ev{display:flex;gap:10px}
 .ai-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
 .ai-dot.ok{background:var(--green)}.ai-dot.warning{background:var(--yellow)}.ai-dot.info{background:var(--blue)}
-.ai-title{font-size:13px;font-weight:500}
 .ai-detail{font-size:12px;color:var(--tx2);margin-top:2px}
-.ai-time{font-size:11px;color:var(--tx3);margin-top:4px}
 
 /* ── Accounts ── */
 .accounts-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
@@ -136,7 +132,6 @@ body{font-family:var(--font);font-size:14px;color:var(--tx);background:var(--bg)
 .proj-bar{flex:1;border-radius:4px 4px 0 0;transition:background 200ms}
 .proj-bar.actual{background:var(--blue);opacity:.7}
 .proj-bar.forecast{background:var(--blue);opacity:.35;border:1px dashed rgba(59,130,246,.4);background:var(--blue-bg)}
-.proj-bar.lifted{background:var(--green);opacity:.8}
 .note{font-size:13px;color:var(--tx2)}
 
 /* ── Scenarios ── */
@@ -152,8 +147,6 @@ body{font-family:var(--font);font-size:14px;color:var(--tx);background:var(--bg)
 .chat-msg{max-width:680px;padding:14px 18px;border-radius:var(--r-lg);line-height:1.7;font-size:14px}
 .chat-msg.bot{background:var(--bg);border:1px solid var(--border-lt);align-self:flex-start}
 .chat-msg.user{background:var(--tx);color:#fff;align-self:flex-end}
-.chat-msg strong{font-weight:600}
-.chat-msg .num{font-weight:600;color:var(--blue)}
 .chat-footer{border-top:1px solid var(--border);padding:16px 24px;background:var(--surface)}
 .suggestions{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 .sq{padding:6px 14px;border-radius:99px;border:1px solid var(--border);background:transparent;font-size:13px;color:var(--tx2);cursor:pointer;transition:all 100ms;font-family:var(--font)}
@@ -184,7 +177,6 @@ body{font-family:var(--font);font-size:14px;color:var(--tx);background:var(--bg)
 .trail li::before{content:'\2713';color:var(--green);font-weight:700;font-size:12px}
 .trail li:last-child{border-bottom:none}
 .trail li.pending::before{content:'\25CB';color:var(--yellow)}
-.trail li.fail::before{content:'\2717';color:var(--red)}
 
 /* ── Toast ── */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(12px);background:var(--tx);color:#fff;padding:10px 22px;border-radius:99px;font-size:13px;font-weight:500;opacity:0;transition:all 200ms;z-index:2000;pointer-events:none;white-space:nowrap}
@@ -193,7 +185,7 @@ body{font-family:var(--font);font-size:14px;color:var(--tx);background:var(--bg)
 /* ── Responsive ── */
 @media(max-width:1024px){
   .sidebar{display:none}.main{margin-left:0}
-  .metrics-row,.accounts-row,.pipeline{grid-template-columns:1fr}
-  .two-col,.rev-grid{grid-template-columns:1fr}
+  .metrics-row,.accounts-row{grid-template-columns:1fr}
+  .two-col{grid-template-columns:1fr}
   .content{padding:16px}
 }
